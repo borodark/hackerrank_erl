@@ -26,11 +26,11 @@ processCurrentRow(CurrentIndex, CurrentRow, [PrS,SecS], MatrixSize) ->
     PrimaryDiagonalElement = lists:nth(MatrixSize - CurrentIndex +1, CurrentRow),
     [PrS + PrimaryDiagonalElement , SecS + SecDiagonalElement].
 
-
+% change to use of tuples 
 read_array(0,_) -> [];
 read_array(N,D) -> 
    {ok, [X]} = io:fread("", D),
-   [X | read_array(N-1,D)].
+   [X | read_array(N-1,D)], .
 
 read_2darray(0,_,_) -> [];
 read_2darray(N,M,D) ->
