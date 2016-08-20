@@ -26,7 +26,7 @@ main() ->
     % io:format("~p~n",[A]),
     % io:format("~p~n",[M]),
     % , io:format("~p~n",[Rotated])
-.
+, erlang:halt().
 
  
 read_array(0,Rc) -> lists:reverse(Rc);

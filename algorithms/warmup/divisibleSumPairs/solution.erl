@@ -7,7 +7,8 @@ main() ->
     DivisibleSumPairs = fun F([],_,Rc) -> Rc;  
 			    F(Array,Divisor,Rc) -> [H|T] = Array, F(T,K,Rc+length([ X || X <-T, (H + X) rem Divisor =:=0])) end ,
     A = read_array(N,[]), 
-    ok = io:format("~p~n", [DivisibleSumPairs(A,K,0)]).
+    ok = io:format("~p~n", [DivisibleSumPairs(A,K,0)]), 
+    erlang:halt().
     
 read_array(0,Rc) -> lists:reverse(Rc);
 read_array(N,Rc) -> 
