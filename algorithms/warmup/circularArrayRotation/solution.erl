@@ -6,8 +6,12 @@ main() ->
     { ok, [N,K,Q]} = io:fread("", "~d~d~d"), % N - array size, 
 					     % K - number of elements to rotate, 
 					     % Q - number of indexes in output
- %io:format("Starting! ~p ~n",[calendar:local_time()]),    
-    A = read_array(N,[]), % read array to be rotated 
+    % io:format("~p ~p ~p ~n",[N,K,Q]),    
+    ToBeRotated = io:get_line(""),
+    Tokens = string:tokens(ToBeRotated," \n"),
+    A = lists:map( fun(X) -> list_to_integer(X) end, Tokens), 
+    % io:format("Line! ~p ~n",A),
+    % A = read_array(N,[]), % read array to be rotated 
   %  io:format("Array Read! ~p ~n",[A]),
    % io:format("Array Read! ~p ~n",[calendar:local_time()]),
     M =  read_array(Q,[]), % read the indexes of elements of rotated array to be displayed in output
@@ -27,6 +31,7 @@ main() ->
     % io:format("~p~n",[M]),
     % , io:format("~p~n",[Rotated])
 , erlang:halt().
+
 
  
 read_array(0,Rc) -> lists:reverse(Rc);
