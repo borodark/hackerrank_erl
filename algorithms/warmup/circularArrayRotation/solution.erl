@@ -19,7 +19,10 @@ main() ->
 
   % Rotate array K times   
   % just split K elements from tail and move to head
-    {Head,Tail} = lists:split(N-K, A),
+    % if K > N rotate K rem N 
+    % {Head,Tail} = lists:split(N-(K rem N), A),
+    % {Head,Tail} = lists:split(N-K, A),
+    {Head,Tail} = lists:split(split(N,K), A),
     % io:format("Split Done! ~p ~n",[calendar:local_time()]),
     Rotated = lists:flatten([Tail|Head]),
     % io:format("Join + flatten Done!  ~p ~n",[calendar:local_time()]),
@@ -32,6 +35,8 @@ main() ->
     % , io:format("~p~n",[Rotated])
 , erlang:halt().
 
+split(Size,Rotate) when Rotate > Size -> Size-(Rotate rem Size); 
+split(Size, Rotate) -> Size - Rotate. 
 
  
 read_array(0,Rc) -> lists:reverse(Rc);
